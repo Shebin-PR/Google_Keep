@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_notes/Getx/controller.dart';
 import 'package:google_notes/Screens/homepage.dart';
-import 'package:google_notes/Screens/login.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

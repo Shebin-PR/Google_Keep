@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_notes/Screens/addnotes.dart';
 import 'package:google_notes/Widgets/drawer.dart';
 
-class Notes extends StatefulWidget {
+class Notes extends StatelessWidget {
   const Notes({Key? key}) : super(key: key);
 
   @override
-  _NotesState createState() => _NotesState();
-}
-
-class _NotesState extends State<Notes> {
-  final FloatingActionButtonLocation _fablocation =
-      FloatingActionButtonLocation.endDocked;
-
-  @override
   Widget build(BuildContext context) {
+    const FloatingActionButtonLocation _fablocation =
+        FloatingActionButtonLocation.endDocked;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

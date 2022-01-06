@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class AddNewNote extends StatefulWidget {
+class AddNewNote extends StatelessWidget {
   const AddNewNote({Key? key}) : super(key: key);
 
-  @override
-  _AddNewNoteState createState() => _AddNewNoteState();
-}
-
-class _AddNewNoteState extends State<AddNewNote> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +12,7 @@ class _AddNewNoteState extends State<AddNewNote> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
         ),
@@ -55,9 +51,16 @@ class _AddNewNoteState extends State<AddNewNote> {
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: const [
-            Text(
-              "Title",
-              style: TextStyle(fontSize: 30),
+            TextField(
+              // controller: _controller,
+              textCapitalization: TextCapitalization.words,
+              cursorHeight: 30,
+              cursorRadius: Radius.circular(10),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Title",
+                hintStyle: TextStyle(fontSize: 30, color: Colors.black87),
+              ),
             ),
             TextField(
               // controller: _controller,
@@ -90,11 +93,10 @@ class _AddNewNoteState extends State<AddNewNote> {
                           children: [
                             IconButton(
                               onPressed: () {},
-                              icon:const Icon(
+                              icon: const Icon(
                                 Icons.camera_alt_outlined,
                                 color: Colors.black,
                               ),
-                              
                             ),
                           ],
                         ),

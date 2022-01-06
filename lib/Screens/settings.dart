@@ -5,14 +5,10 @@ import 'package:google_notes/Getx/controller.dart';
 import 'package:google_notes/Screens/login.dart';
 import 'package:google_notes/Screens/notes.dart';
 
-class Settings extends StatefulWidget {
+class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
 
-  @override
-  _SettingsState createState() => _SettingsState();
-}
 
-class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
       final user = FirebaseAuth.instance.currentUser;

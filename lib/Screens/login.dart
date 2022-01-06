@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_notes/Getx/controller.dart';
-import 'package:google_notes/Screens/notes.dart';
 
-class Loginpage extends StatefulWidget {
+class Loginpage extends StatelessWidget {
   const Loginpage({Key? key}) : super(key: key);
 
-  @override
-  _LoginpageState createState() => _LoginpageState();
-}
 
-class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
