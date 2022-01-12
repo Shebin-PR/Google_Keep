@@ -8,10 +8,9 @@ import 'package:google_notes/Screens/notes.dart';
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-      final user = FirebaseAuth.instance.currentUser;
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -66,7 +65,7 @@ class Settings extends StatelessWidget {
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
-                    _controller.logout();
+                    _controller.logout();   
                     Get.offAll(() => const Loginpage());
                   },
                   icon: const Icon(

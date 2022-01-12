@@ -1,11 +1,12 @@
+import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_notes/Getx/controller.dart';
+import 'package:google_notes/Screens/homepage.dart';
 
 class Loginpage extends StatelessWidget {
   const Loginpage({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +44,11 @@ class Loginpage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 20),
             child: GetBuilder<GoogleAuthController>(
               builder: (_controller) {
-                return ElevatedButton.icon(
-                  onPressed: () {
-                    _controller.googleLogin();
+                return GoogleAuthButton(
+                  onPressed: () async {
+                    await _controller.googleLogin();
+                    Get.offAll(() => const HomePage());
                   },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.google,
-                    color: Colors.red,
-                  ),
-                  label: const Text(
-                    "Continue with google",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
                 );
               },
             ),

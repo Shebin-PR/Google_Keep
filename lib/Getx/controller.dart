@@ -20,6 +20,7 @@ class GoogleAuthController extends GetxController {
     );
 
     await FirebaseAuth.instance.signInWithCredential(credential);
+    update();
   }
 
   Future logout() async {

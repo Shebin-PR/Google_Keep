@@ -1,8 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddNewNote extends StatelessWidget {
+class AddNewNote extends StatefulWidget {
   const AddNewNote({Key? key}) : super(key: key);
+
+  @override
+  State<AddNewNote> createState() => _AddNewNoteState();
+}
+
+class _AddNewNoteState extends State<AddNewNote> {
+  String title = "";
+
+  String notes = "";
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    add();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,23 +67,26 @@ class AddNewNote extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
-          children: const [
+          children: [
             TextField(
-              // controller: _controller,
+              onChanged: (value) {
+                title = value;
+              },
               textCapitalization: TextCapitalization.words,
-              cursorHeight: 30,
-              cursorRadius: Radius.circular(10),
-              decoration: InputDecoration(
+              cursorHeight: 20,
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Title",
-                hintStyle: TextStyle(fontSize: 30, color: Colors.black87),
+                hintStyle: TextStyle(fontSize: 27, color: Colors.black87),
               ),
             ),
             TextField(
-              // controller: _controller,
+              onChanged: (value) {
+                notes = value;
+              },
               maxLines: 25,
               textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Note",
                 hintStyle: TextStyle(fontSize: 20),
@@ -115,9 +135,16 @@ class AddNewNote extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(Icons.more_vert_outlined),
             ),
-          ],
+          ], 
         ),
       ),
     );
+  }
+
+  void add() {
+    FirebaseFirestore.instance 
+        .collection("data")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set({"title": title, "notes": notes});
   }
 }

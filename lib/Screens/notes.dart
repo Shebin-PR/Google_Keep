@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_notes/Screens/addnotes.dart';
 import 'package:google_notes/Widgets/drawer.dart';
@@ -11,6 +12,9 @@ class Notes extends StatelessWidget {
         FloatingActionButtonLocation.endDocked;
     return Scaffold(
       backgroundColor: Colors.white,
+
+      /// appbar starts ///
+      ///
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.blueGrey[100],
@@ -76,8 +80,30 @@ class Notes extends StatelessWidget {
           ),
         ),
       ),
+
+      /// appbar ends ///
+      ///
+
       drawer: const DrawerWidget(),
-      body: ListView(),
+
+      /// body starts ///
+      ///
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection("data").snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return const SizedBox();
+        },
+      ),
+  
+      /// body ends
+      ///
+      /// Bottom app bar starts ///
+      ///
       bottomNavigationBar: BottomAppBar(
         color: Colors.blueGrey[100],
         child: Row(
@@ -103,6 +129,11 @@ class Notes extends StatelessWidget {
           ],
         ),
       ),
+
+      /// Bottom app bar ends ///
+      ///
+      /// floating action button starts ///
+      ///
       floatingActionButton: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -133,6 +164,9 @@ class Notes extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: _fablocation,
+
+      /// floating action button ends ///
+      ///
     );
   }
 }
