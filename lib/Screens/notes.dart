@@ -103,13 +103,20 @@ class Notes extends StatelessWidget {
                   children: [
                     Text(
                       document["title"].toString(),
-                      style: TextStyle(
-                        color: Colors.blue[900],
+                      style: const TextStyle(
+                        color: Colors.deepPurple,
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),
-                    Text(document["notes"].toString())
+                    Text(
+                      document["notes"].toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: Colors.grey[700],
+                      ),
+                    )
                   ],
                 );
               }),
