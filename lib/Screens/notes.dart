@@ -96,10 +96,28 @@ class Notes extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          return const SizedBox();
+          return ListView(
+            children: [
+              ...snapshot.data!.docs.map((document) {
+                return Column(
+                  children: [
+                    Text(
+                      document["title"].toString(),
+                      style: TextStyle(
+                        color: Colors.blue[900],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Text(document["notes"].toString())
+                  ],
+                );
+              }),
+            ],
+          );
         },
       ),
-  
+
       /// body ends
       ///
       /// Bottom app bar starts ///

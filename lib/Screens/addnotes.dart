@@ -14,6 +14,7 @@ class _AddNewNoteState extends State<AddNewNote> {
   String title = "";
 
   String notes = "";
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -69,11 +70,11 @@ class _AddNewNoteState extends State<AddNewNote> {
         child: ListView(
           children: [
             TextField(
+              style: const TextStyle(fontSize: 27, color: Colors.black87),
               onChanged: (value) {
                 title = value;
               },
-              textCapitalization: TextCapitalization.words,
-              cursorHeight: 20,
+              cursorHeight: 35,
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Title",
@@ -135,14 +136,14 @@ class _AddNewNoteState extends State<AddNewNote> {
               onPressed: () {},
               icon: const Icon(Icons.more_vert_outlined),
             ),
-          ], 
+          ],
         ),
       ),
     );
   }
 
   void add() {
-    FirebaseFirestore.instance 
+    FirebaseFirestore.instance
         .collection("data")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set({"title": title, "notes": notes});
